@@ -1,7 +1,7 @@
 <div class="form-container">
     <form [formGroup]="myForm" (ngSubmit)="submitRegister()" class="form bg-warning p-5">
         <h1 class="login-form-title">
-          Login
+          Register
         </h1>
 
         <div class="wrap-input">
@@ -52,5 +52,10 @@
     <a routerLink="/auth/login" class="txt2">
        Accede aquí
     </a>
+  </div>
+  <div class="mensaje-erroneo" *ngIf="message.length>0">
+    <p *ngFor="let mssg of message" class="margin-mesaje-parrafo">
+      {{mssg}}
+    </p>
   </div>
 </div>

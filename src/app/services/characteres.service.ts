@@ -1,21 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, catchError, tap, take } from 'rxjs/operators';
+import { map, catchError} from 'rxjs/operators';
 
 import {
   IRickMortyApi,
   IRickMortyApiCharacters,
 } from '../interfaces/rick-morty.interface';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CharacteresService {
+
+  private baseUrl = environment.apiUrl;
+
   constructor(private _httpClient: HttpClient) {}
 
   getCharacteres(): Observable<IRickMortyApiCharacters[]> {
     return this._httpClient
-      .get<IRickMortyApi>('https://rickandmortyapi.com/api/character')
+      .get<IRickMortyApi>(this.baseUrl)
       .pipe(
         map((res) => res.results),
        // tap(console.log),

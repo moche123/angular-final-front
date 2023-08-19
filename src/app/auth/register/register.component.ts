@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -13,15 +15,68 @@ export class RegisterComponent {
     password: ['', [Validators.required,Validators.minLength(6)]]
   });
 
-  public messages:string[] = [];
+  public message:string[] = [];
 
   constructor( 
-    private _fb:FormBuilder
+    private _fb: FormBuilder,
+    private _router: Router,
+    private _authService: ApiService
   ) { }
 
 
-  public submitRegister(){
-    console.log(this.myForm.value);
+  submitRegister() {
+    const { name, email, password } = this.myForm.value;
+
+    this._authService.register(name, email, password, 1, true)
+      .subscribe(result => {
+        if (result === true) {
+          this._router.navigateByUrl('/pages')
+        } else {
+
+          if (result.msg) {
+            setTimeout(() => {
+              this.message.push(result.msg);
+            }, 300);
+
+            setTimeout(() => {
+              this.message = [];
+            }, 3100)
+          }
+
+          if (result.errors?.name) {
+            setTimeout(() => {
+              this.message.push(result.errors.name.msg);
+            }, 300);
+
+            setTimeout(() => {
+              this.message = [];
+            }, 3100)
+          }
+          if (result.errors?.email) {
+            setTimeout(() => {
+              this.message.push(result.errors.email.msg);
+            }, 300);
+
+            setTimeout(() => {
+              this.message = [];
+            }, 3100)
+          }
+
+          if (result.errors?.password) {
+            setTimeout(() => {
+              this.message.push(result.errors.password.msg);
+            }, 300);
+
+            setTimeout(() => {
+              this.message = [];
+            }, 3100)
+          }
+
+        }
+      })
+
+
+
   }
 
   fieldIsValidReactive(field:string){

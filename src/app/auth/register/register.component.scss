@@ -18,3 +18,19 @@
     // grid-template-rows: repeat(4, 60px);
     gap: 16px;
 }
+
+.mensaje-erroneo {
+    background: rgb(3, 12, 41);
+    color: #fff;
+    padding: 30px 15px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    width: 30%;
+  }
+  
+  .margin-mesaje-parrafo {
+    margin: 10px;
+  }

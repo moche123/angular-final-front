@@ -10,7 +10,7 @@
 
           {{ character.status }}
       </p>
-      <a class="btn btn-warning" routerLink="/pages/favorites">
+      <a class="btn btn-warning" (click)="addFavorite(character)">
         <i class="fa-solid fa-cart-plus"></i>
       </a>
     </div>
