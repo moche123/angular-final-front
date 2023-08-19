@@ -1,0 +1,20 @@
+.form-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.wrap-input{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form{
+    display: grid;
+    // grid-template-rows: repeat(4, 60px);
+    gap: 16px;
+}

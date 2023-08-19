@@ -1,0 +1,17 @@
+.characteres-container{
+    display: grid;
+    grid-template-columns: repeat( auto-fill , minmax( 200px, 1fr ) );
+    gap: 20px;
+    &__item{
+        display: flex;
+        flex-direction: column;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .status{
+        font-weight: 500;
+    }
+}

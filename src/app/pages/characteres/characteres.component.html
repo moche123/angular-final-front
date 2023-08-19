@@ -1,0 +1,17 @@
+<div class="characteres-container">
+    <div class="characteres-container__item text-center" *ngFor="let character of characteres$ | async">
+      <h4>
+
+          {{ character.name.length < 13 ? character.name : (character.name | slice: 0:13 ) + '...' }}
+
+      </h4>
+      <img [src]="character.image" appImgBreak />
+      <p class="mt-1 mb-0 text-success status">
+
+          {{ character.status }}
+      </p>
+      <a class="btn btn-warning" routerLink="/pages/favorites">
+        <i class="fa-solid fa-cart-plus"></i>
+      </a>
+    </div>
+</div>
